@@ -2,7 +2,7 @@ const http = require('http')
 const throng = require('throng')
 const createServer = require('./app')
 
-const port = parseInt(process.env.PORT, 10) || 5000
+const port = parseInt(process.env.PORT, 10) || 3000
 
 function startServer(id) {
   const server = http.createServer(createServer())

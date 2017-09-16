@@ -6,7 +6,6 @@ block content
       img.logo(src='/logo.svg')
       h1 icongram
       h6 Icons on the fly
-    p.is-text-center.is-text-uppercase Supported libraries
     include nav
     br
     .row
@@ -68,3 +67,7 @@ block content
         img(src=originalUrl + 'simple/youtube.svg?colored')
         |&nbsp;
         img(src=originalUrl + 'simple/spotify.svg?color=000000')
+        br
+        br
+        p.is-center
+          a.button.primary.outline(target="_blank",href=`https://twitter.com/intent/tweet?url=${host}&text=icongram - Icons on the fly&via=geekGogari&hashtags=web,icons,svg`) Give a shout-out

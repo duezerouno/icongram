@@ -21,6 +21,10 @@ app.disable('x-powered-by');
 app.enable('trust proxy');
 app.use(express.static('app/public'))
 
+if (isDev) {
+  app.locals.pretty = true;
+}
+
 app.use(logger(global.production ? 'combined' : 'dev'));
 
 app.get('/', function(request, reply) {

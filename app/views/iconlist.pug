@@ -1,0 +1,30 @@
+extends layouts/default.pug
+
+block content
+  .container
+    br
+    .is-text-center
+      a.brand(href='/')
+        img.logo(src='/logo.svg', width='100')
+      include nav
+      h1= title
+        small #{icons.length} icons
+      p
+        a(href=source, target='_blank') Source
+      br
+      code
+        != originalUrl.replace(/\/$/, "") + '/{icon}.svg?[options]'
+    br
+    br
+    div.row.icons
+      each icon, key in icons
+        div.col-3.icon
+          kbd= icon.name || key
+          if icon
+            != '&nbsp;'
+            if icon.path
+              include svg
+            else if icon.icon
+              != icon.icon
+            else
+              img(src='./' + icon.name + '.svg')

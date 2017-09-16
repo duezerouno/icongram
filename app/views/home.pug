@@ -1,0 +1,70 @@
+extends layouts/default.pug
+
+block content
+  #home.container
+    .hero.is-center
+      img.logo(src='/logo.svg')
+      h1 icongram
+      h6 Icons on the fly
+    p.is-text-center.is-text-uppercase Supported libraries
+    include nav
+    br
+    .row
+      .col-2
+      .col-8
+        h4 How to use:
+        pre
+          = originalUrl + '{library name}/{icon}.svg?[options]'
+        p
+        | where:
+        ul
+          li
+            strong library name: 
+            code entypo, feather, fontawesome, material, octicons, simple
+          li
+            strong icon:
+            |  icon name, see the library page above
+          li
+            strong Options
+            ul
+              li
+                strong size:
+                |  number in pixels eg. 500
+              li
+                strong color:
+                |  color hex, has to be 6 characters
+              li
+                strong colored:
+                |  boolean flag only available for <code>simple</code> currently
+        br
+        hr
+        br
+        h4 Examples:
+        h6 Font Awesome
+        pre= originalUrl + 'fontawesome/heart.svg?color=44dddd'
+        img(src=originalUrl + 'fontawesome/heart.svg?color=44dddd')
+        br
+        br
+        h6 Feather
+        pre= originalUrl + 'feather/slack.svg?size=32'
+        img(src=originalUrl + 'feather/slack.svg?size=32')
+        br
+        br
+        h4 Examples:
+        h6 Material Design Icons
+        pre= originalUrl + 'material/google-maps.svg?size=100&color=689f18'
+        img(src=originalUrl + 'material/google-maps.svg?size=100&color=689f18')
+        br
+        br
+        h6 Simple Icons
+        pre
+          = originalUrl + 'simple/facebook.svg?colored'
+          ='\n'
+          = originalUrl + 'simple/youtube.svg?colored'
+          ='\n'
+          = originalUrl + 'simple/spotify.svg?color=000000'
+        img(src=originalUrl + 'simple/facebook.svg?colored')
+        |&nbsp;
+        img(src=originalUrl + 'simple/youtube.svg?colored')
+        |&nbsp;
+        img(src=originalUrl + 'simple/spotify.svg?color=000000')

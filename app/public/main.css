@@ -1,0 +1,64 @@
+:root {
+  --primary-color: #505e69;
+}
+.hero {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: 6rem;
+}
+
+h1 {
+  margin-bottom: 0;
+}
+
+h1 small {
+  font-size: 0.5em;
+  padding: 0 10px;
+}
+
+.main-nav {
+  margin-bottom: 2rem;
+}
+
+.libs {
+  list-style-type: none;
+  margin-bottom: 10rem;
+}
+
+.libs li {
+  display: inline-block;
+  padding: 1rem;
+}
+
+.icons > * {
+  flex-direction: row-reverse;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.icons svg.icon,
+.icon svg,
+.icon img {
+  width: 24px;
+  height: 24px;
+}
+
+.icon kbd {
+  font-size: 0.7em;
+  margin-left: 5px;
+  color: var(--primary-color);
+}
+
+pre {
+  font-size: 0.9em;
+}
+
+#footer {
+  margin-top: 3rem;
+  padding: 5rem 0;
+  background-color: rgb(234, 237, 242);
+}

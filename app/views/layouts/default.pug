@@ -1,23 +1,23 @@
-- var domain = originalUrl
+- var domain = host
 doctype html
 html
   head
     title #{title} - icongram
     link(rel='shortcut icon', href='/favicon.png')
-    link(rel='icon', type='image/png', href=`${domain}favicon.png`, sizes='32x32')
+    link(rel='icon', type='image/png', href=`${domain}/favicon.png`, sizes='32x32')
     link(rel='stylesheet', href='https://unpkg.com/chota')
     link(rel='stylesheet', href='/main.css')
     link(rel='canonical', href=`${domain}`)
     meta(property='og:url', content=`${domain}`)
     meta(property='og:type', content='website')
     meta(property='og:title', content='icongram: icons on the fly')
-    meta(property='og:image', content=`${domain}icongram-banner.png`)
+    meta(property='og:image', content=`${domain}/icongram-banner.png`)
     meta(property='og:description', content="icongram serves you icons from your favourite icon library on the fly.")
     meta(name='twitter:card', content='summary_large_image')
     meta(name='twitter:site', content='@geekGogari')
     meta(name='twitter:creator', content='@geekGogari')
     meta(name='twitter:title', content='icongram: icons on the fly')
-    meta(name='twitter:image', content=`${domain}icongram-banner.png`)
+    meta(name='twitter:image', content=`${domain}/icongram-banner.png`)
     meta(name='twitter:description', content="icongram serves you icons from your favourite icon library on the fly..")
     meta(name='theme-color', content='#00d1b2')
 

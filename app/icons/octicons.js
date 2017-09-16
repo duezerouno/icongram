@@ -35,7 +35,7 @@ router.get('/:icon.svg', function(req, reply, next) {
   if (!isIcon) return reply.status(404).send('Icon Not Found');
   const ico = require.resolve(`octicons/build/svg/${req.params.icon}.svg`);
 
-  console.log('Served icon', ico);
+  // console.log('Served icon', ico);
   const rawIcon = fs.readFileSync(ico, 'utf8');
 
   makeIcon(rawIcon, req.query)

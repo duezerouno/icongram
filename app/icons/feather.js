@@ -35,7 +35,7 @@ router.get('/:icon.svg', function(req, reply, next) {
   const size = req.query.size && parseInt(req.query.size);
 
   if (!isIcon) reply.status(404).send('Icon Not Found');
-  console.log('Served icon', req.params.icon);
+  // console.log('Served icon', req.params.icon);
   const rawIcon = fIcons.toSvg(req.params.icon);
 
   makeIcon(rawIcon, req.query)

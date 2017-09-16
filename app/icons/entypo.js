@@ -43,7 +43,7 @@ router.get('/:icon.svg', function(req, reply, next) {
   console.log(ico);
   if (!ico) return reply.status(404).send('Icon Not Found');
 
-  console.log('Served icon', ico.name);
+  // console.log('Served icon', ico.name);
   const rawIcon = ico.icon;
 
   utils

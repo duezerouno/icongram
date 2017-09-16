@@ -51,6 +51,12 @@ app.use(function(err, req, res, next) {
   }
 });
 
-app.listen(env.NODE_PORT || 3000, env.NODE_IP || '0.0.0.0', function() {
-  console.log(`Application worker ${process.pid} started...`);
-});
+
+function createApp() {
+  // app.listen(env.NODE_PORT || 3000, env.NODE_IP || '0.0.0.0', function() {
+  //   console.log(`Application worker ${process.pid} started...`);
+  // });
+  return app;
+}
+
+module.exports = createApp

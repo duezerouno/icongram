@@ -24,7 +24,7 @@ router.get('/:icon.svg', function(req, reply, next) {
   if (!objIcon) return reply.status(404).send('Icon Not Found');
   const ico = require.resolve(`mdi-svg/svg/${req.params.icon}.svg`);
 
-  console.log('Served icon', ico);
+  // console.log('Served icon', ico);
   const rawIcon = fs.readFileSync(ico, 'utf8');
 
   makeIcon(rawIcon, req.query)

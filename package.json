@@ -2,8 +2,15 @@
   "name": "icongram",
   "version": "1.0.0",
   "description": "Icons on the fly",
-  "author": "Jenil Gogari <jenil27@gmail.com>",
-  "private": true,
+  "author": "Jenil Gogari <i@jgog.in>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jenil/icongram.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jenil/icongram/issues"
+  },
   "scripts": {
     "dev": "nodemon server.js",
     "start": "NODE_ENV=production node server.js"

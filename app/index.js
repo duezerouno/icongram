@@ -14,9 +14,11 @@ app.use((req, res, n) => {
   n()
 })
 
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.disable('x-powered-by');
+app.enable('trust proxy');
 app.use(express.static('app/public'))
 
 app.use(logger(global.production ? 'combined' : 'dev'));

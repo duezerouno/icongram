@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const icons = require('mdi-svg/meta.json');
 const fs = require('fs');
-const path = require('path');
 const makeIcon = require('../utils').makeIcon;
 
 icons.forEach(icon => {
@@ -23,8 +22,6 @@ router.get('/:icon.svg', function(req, reply, next) {
 
   if (!objIcon) return reply.status(404).send('Icon Not Found');
   const ico = require.resolve(`mdi-svg/svg/${req.params.icon}.svg`);
-
-  // console.log('Served icon', ico);
   const rawIcon = fs.readFileSync(ico, 'utf8');
 
   makeIcon(rawIcon, req.query)
@@ -33,13 +30,6 @@ router.get('/:icon.svg', function(req, reply, next) {
       console.error(err);
       next(err);
     });
-
-  // reply.send({
-  //   obj: objSvg,
-  //   raw: rawIcon,
-  //   svg: res
-  // })
-  // reply.type('image/svg+xml').send(res)
 });
 
 module.exports = router;

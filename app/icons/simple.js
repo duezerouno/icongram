@@ -38,7 +38,7 @@ router.get('/:icon.svg', function(req, reply, next) {
 
   req.query.color = colored ? objIcon.hex : req.query.color;
 
-  if (!objIcon) reply.status(404).send('Icon Not Found');
+  if (!objIcon) return reply.status(404).send('Icon Not Found');
   request(SOURCE + `/icons/${objIcon.slug}.svg`)
     .then(rawIcon => {
       makeIcon(rawIcon.data, req.query)

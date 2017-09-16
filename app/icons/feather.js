@@ -29,13 +29,7 @@ router.get('/json', function(req, reply) {
 
 router.get('/:icon.svg', function(req, reply, next) {
   const isIcon = fIcons.icons[req.params.icon];
-  const color = /^[0-9A-F]{6}$/i.test(req.query.color)
-    ? '#' + req.query.color
-    : '';
-  const size = req.query.size && parseInt(req.query.size);
-
-  if (!isIcon) reply.status(404).send('Icon Not Found');
-  // console.log('Served icon', req.params.icon);
+  if (!isIcon) return reply.status(404).send('Icon Not Found');
   const rawIcon = fIcons.toSvg(req.params.icon);
 
   makeIcon(rawIcon, req.query)
@@ -44,13 +38,6 @@ router.get('/:icon.svg', function(req, reply, next) {
       console.error(err);
       next(err);
     });
-
-  // reply.send({
-  //   obj: objSvg,
-  //   raw: rawIcon,
-  //   svg: res
-  // })
-  // reply.type('image/svg+xml').send(res);
 });
 
 module.exports = router;

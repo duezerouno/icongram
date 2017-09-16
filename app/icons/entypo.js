@@ -1,7 +1,5 @@
 const router = require('express').Router();
 const entypo = require('entypo');
-const fs = require('fs');
-const path = require('path');
 const utils = require('../utils');
 let icons = [];
 
@@ -43,7 +41,6 @@ router.get('/:icon.svg', function(req, reply, next) {
   console.log(ico);
   if (!ico) return reply.status(404).send('Icon Not Found');
 
-  // console.log('Served icon', ico.name);
   const rawIcon = ico.icon;
 
   utils
@@ -53,13 +50,6 @@ router.get('/:icon.svg', function(req, reply, next) {
       console.error(err);
       next(err);
     });
-
-  // reply.send({
-  //   obj: objSvg,
-  //   raw: rawIcon,
-  //   svg: res
-  // })
-  // reply.type('image/svg+xml').send(res)
 });
 
 module.exports = router;

@@ -1,11 +1,10 @@
 const router = require('express').Router();
 const fs = require('fs');
-const path = require('path');
 const makeIcon = require('../utils').makeIcon;
 let icons = [];
 
 router.get('/', function(req, reply) {
-  reply.locals.source = 'http://fontawesome.io'
+  reply.locals.source = 'http://fontawesome.io';
   reply.render('iconlist', { title: 'Font Awesome', icons: icons });
 });
 
@@ -21,7 +20,6 @@ router.get('/:icon.svg', function(req, reply, next) {
     `font-awesome-svg-png/black/svg/${req.params.icon}.svg`
   );
 
-  // console.log('Served icon', ico);
   const rawIcon = fs.readFileSync(ico, 'utf8');
 
   makeIcon(rawIcon, req.query)
@@ -38,8 +36,7 @@ var LESS_VARIABLE_REGEX = /@fa-var-([\w-]+):\s*"\\([0-9a-f]+)";/g;
 
 function parseIconListFromLess(lines) {
   lines = lines.toString();
-  var match,
-    result = [];
+  var match, result = [];
   while ((match = LESS_VARIABLE_REGEX.exec(lines))) {
     const ico = fs.readFileSync(
       require.resolve(`font-awesome-svg-png/black/svg/${match[1]}.svg`),

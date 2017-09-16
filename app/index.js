@@ -10,7 +10,8 @@ app.locals.modules = path.join(__dirname, '..', 'node_modules');
 
 app.use((req, res, n) => {
   app.locals.host = `${req.protocol}://${req.get('host')}`
-  app.locals.originalUrl = `${app.locals.host}${req.originalUrl}`
+  app.locals.originalUrl = `${app.locals.host}${req.path}`
+  console.log(app.locals.originalUrl);
   n()
 })
 

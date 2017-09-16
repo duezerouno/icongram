@@ -1,5 +1,5 @@
 <br/>
-<p align="center"><a href="https://icongram.herokuapp.com" target="_blank"><img width="125"src="https://icongram.herokuapp.com/logo.svg"></a></p>
+<p align="center"><a href="https://icongram.jgog.in" target="_blank"><img width="125"src="https://icongram.jgog.in/logo.svg"></a></p>
 
 <h1 align="center">icongram</h1>
 
@@ -15,7 +15,7 @@ Because sometimes all you want is just a freaking icon without the need of fonts
 ## How to use?
 
 ```
-http://icongram.herokuapp.com/{library name}/{icon}.svg?[options]
+http://icongram.jgog.in/{library name}/{icon}.svg?[options]
 ```
 
 where:
@@ -29,10 +29,10 @@ where:
 ## Example
 
 ```
-http://icongram.herokuapp.com/fontawesome/heart.svg?color=DD0A0D
+http://icongram.jgog.in/fontawesome/heart.svg?color=DD0A0D
 ```
 
-![](http://icongram.herokuapp.com/fontawesome/heart.svg?color=DD0A0D)
+![](http://icongram.jgog.in/fontawesome/heart.svg?color=DD0A0D)
 
 ## License
 

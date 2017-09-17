@@ -16,7 +16,6 @@
     "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
-    "axios": "^0.16.2",
     "entypo": "^2.0.0",
     "express": "^4.15.4",
     "feather-icons": "^3.2.2",
@@ -25,6 +24,7 @@
     "morgan": "^1.8.2",
     "octicons": "^6.0.1",
     "pug": "^2.0.0-rc.4",
+    "simple-icons": "^1.0.2",
     "throng": "^4.0.0",
     "xml2js": "^0.4.19"
   },

@@ -41,7 +41,7 @@ app.use('/material', require('./icons/material'));
 app.use('/octicons', require('./icons/octicons'));
 app.use('/simple', require('./icons/simple'));
 
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res) {
   console.error('[ERROR]', new Date().toISOString(), isDev ? err.stack : err.message);
 
   if (err.error) {
@@ -59,9 +59,6 @@ app.use(function(err, req, res, next) {
 
 
 function createApp() {
-  // app.listen(env.NODE_PORT || 3000, env.NODE_IP || '0.0.0.0', function() {
-  //   console.log(`Application worker ${process.pid} started...`);
-  // });
   return app;
 }
 

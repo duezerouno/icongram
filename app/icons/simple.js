@@ -1,58 +1,57 @@
-const router = require('express').Router();
-const request = require('axios');
-const makeIcon = require('../utils').makeIcon;
-const SOURCE = 'https://cdn.rawgit.com/simple-icons/simple-icons/develop';
-let icons = [];
+const router = require("express").Router();
+const makeIcon = require("../utils").makeIcon;
+const simpleIcons = require("simple-icons");
 
-async function getIcons() {
-  await request(SOURCE + '/_data/simple-icons.json')
-    .then(function(res) {
-      console.log('Got simple icons...');
-      icons = res.data.icons.filter(
-        i => (i.slug = i.title.toLowerCase().replace(/[^a-z0-9]/gim, ''))
-      );
+let icons = {};
+
+Object.keys(simpleIcons).forEach(i => {
+  const filename = i
+    .toLowerCase()
+    .replace(/\+/g, "plus")
+    .replace(/[ .\-!’]/g, "");
+  icons[filename] = simpleIcons[i];
+});
+
+router.get("/", function(req, reply) {
+  reply.locals.originalUrl = `${req.app.locals.host}${req.originalUrl}`;
+  reply.locals.source = "https://github.com/simple-icons/simple-icons";
+  reply.render("iconlist", {
+    title: "Simple Icons",
+    icons: Object.keys(icons).map(name => {
+      return {
+        name,
+        icon: icons[name].svg
+      };
     })
-    .catch(function(err) {
-      console.error(SOURCE + '/_data/simple-icons.json', err);
-    });
-}
-
-router.get('/', function(req, reply) {
-  reply.locals.originalUrl = `${req.app.locals.host}${req.originalUrl}`
-  reply.locals.source = 'https://github.com/simple-icons/simple-icons'
-  reply.render('iconlist', {
-    title: 'Simple Icons',
-    icons: icons.filter(i => (i.name = i.slug))
   });
 });
 
-router.get('/json', function(req, reply) {
-  reply.json(icons);
+router.get("/json", function(req, reply) {
+  reply.json(
+    Object.keys(icons).map(name => {
+      return {
+        name,
+        icon: icons[name].svg
+      };
+    })
+  );
 });
 
-router.get('/:icon.svg', function(req, reply, next) {
-  if (!icons.length) getIcons();
+router.get("/:icon.svg", function(req, reply, next) {
+  const objIcon = icons[req.params.icon];
 
-  const objIcon = icons.find(i => i.slug == req.params.icon);
-  const colored = typeof req.query.colored != 'undefined';
+  const colored = typeof req.query.colored != "undefined";
 
   req.query.color = colored ? objIcon.hex : req.query.color;
 
-  if (!objIcon) return reply.status(404).send('Icon Not Found');
-  request(SOURCE + `/icons/${objIcon.slug}.svg`)
-    .then(rawIcon => {
-      makeIcon(rawIcon.data, req.query)
-        .then(res => reply.type('image/svg+xml').send(res))
-        .catch(err => {
-          console.error(err);
-          next(err);
-        });
-    })
-    .catch(function(err) {
+  if (!objIcon) return reply.status(404).send("Icon Not Found");
+
+  makeIcon(objIcon.svg, req.query)
+    .then(res => reply.type("image/svg+xml").send(res))
+    .catch(err => {
       console.error(err);
+      next(err);
     });
 });
-
-getIcons();
 
 module.exports = router;

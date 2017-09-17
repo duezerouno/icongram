@@ -36,7 +36,8 @@ var LESS_VARIABLE_REGEX = /@fa-var-([\w-]+):\s*"\\([0-9a-f]+)";/g;
 
 function parseIconListFromLess(lines) {
   lines = lines.toString();
-  var match, result = [];
+  var match,
+    result = [];
   while ((match = LESS_VARIABLE_REGEX.exec(lines))) {
     const ico = fs.readFileSync(
       require.resolve(`font-awesome-svg-png/black/svg/${match[1]}.svg`),
